@@ -1,9 +1,7 @@
 import Image from "next/image"
-import Button from "./Components/Button"
-import Button2 from "./Components/Button2"
-import Container from "./Components/Container"
+import { Button, Button2 } from "./Components/Button"
+import { Container, Container2 } from "./Components/Container"
 import Form from "./Components/Form"
-import Container2  from "./Components/Container2"
 import content from "./Components/Content"
 
 const features = content.features;
