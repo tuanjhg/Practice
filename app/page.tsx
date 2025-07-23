@@ -1,102 +1,153 @@
-import Image from "next/image";
+import Image from "next/image"
+import Button from "./Components/Button"
+import Button2 from "./Components/Button2"
+import Container from "./Components/Container"
+import Form from "./Components/Form"
+import Container2  from "./Components/Container2"
+import content from "./Components/Content"
+
+const features = content.features;
+const howItWorkText = content.howItWorkText;
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+    <div className="font-mono grid grid-rows-[20px] min-h-screen p-8 pb-20 gap-[50px] sm:p-20">
+      <header className="sticky top-0 bg-white/80 z-10 w-full border-b border-gray-200">
+        <div className="container mx-auto flex justify-between items-center p-4">
+          <a href="#" className="flex items-center gap-2">
+            <img src="/logo.jpg" alt="logo" className="rounded-md" />
+            <p className="text-xl font-bold text-blue-600">AlPow</p>
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <nav className="hidden md:flex items-center gap-[60px] text-gray-700">
+            <a href="#features" className="hover:text-blue-600 transition-colors">Features</a>
+            <a href="#how-it-works" className="hover:text-blue-600 transition-colors">How It Works</a>
+            <a href="#pricing" className="hover:text-blue-600 transition-colors">Pricing</a>
+            <a href="#" className="hover:text-blue-600 transition-colors">News</a>
+            <a href="#" className="hover:text-blue-600 transition-colors">FAQ</a>
+          </nav>
+          <div>
+            <Button>Contact Us</Button>
+          </div>
         </div>
+      </header>
+      <main>
+        <section className="bg-white py-20 px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            AI - Powerd LMS
+          </h1>
+          <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+            Close knowleadge gaps faster with the  <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">AI-Powered</span>
+          </p>
+           <div className="flex flex-row justify-center gap-[20px]">
+            <Button>Demo</Button>
+            <Button2>How It Works</Button2>
+          </div>
+        </section>
+        <section id="features" className="py-20">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl  font-bold text-gray-900 mb-4">
+                  Will you have 
+              </h1>
+              
+            <h2 className="text-3xl  font-mono text-gray-900">"Not Just Watching, But Truly Learning"</h2>
+            <p className="text-md text-gray-600 mt-4">Tools designed to help you understand deeply and remember for the long term.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-[15px]">
+            {features.map((feature) => (
+              <Container
+                key={feature.title}
+                image={<img src={feature.imageSrc} alt={feature.title} className="mx-auto mb-4 w-16 h-16 rounded-full" />}
+                title={feature.title}
+                bodytext={feature.bodytext}
+              />
+            ))}
+          </div>
+          </section>
+      <section id="how-it-works" className="py-20 text-center bg-gray-50 rounded-lg">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                  How It Works 
+              </h1>
+  <h2 className="text-3xl md:text-4xl font-mono text-gray-900 mb-12">
+    Works in Just 3 Simple Steps
+  </h2>
+  <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-[25px] md:gap-[50px]">
+     {howItWorkText.map((howItWork) => (
+              <Container2
+                key={howItWork.idx}
+                idx={howItWork.idx}
+                title={howItWork.title}
+                bodytext={howItWork.bodytext}
+              />
+            ))}
+  </div>
+</section>
+<div className = "flex flex-col justify-center">
+
+        <Image 
+        src="/image.png"
+        alt="image demo"
+        width={2000}
+        height={50}
+        />
+        <Button>Get Demo</Button>
+</div>
+        <section id="pricing" className="py-20">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Pricing</h2>
+           <div className="flex justify-center gap-[20px]">
+        {["Monthly", "Yearly", "Link"].map((tab) => (
+          <button key={tab} className="px-4 py-2 border rounded hover:bg-gray-100">
+            {tab}
+          </button>
+        ))}
+      </div>
+          <div className="grid  md:grid-cols-2 gap-[15px] max-w-5xl mx-auto">
+  <div className="p-8 rounded-lg shadow-lg border border-gray-200 bg-white flex flex-col">
+    <h3 className="text-2xl font-bold mb-2">Personal</h3>
+    <p className="text-4xl font-bold mb-4">?<span className="text-lg font-mono text-gray-500">/month</span></p>
+    <ul className="mb-6 space-y-2 text-gray-600 flex-grow">
+      <li>✓ 20 courses/month</li>
+      <li>✓ AI Q&A</li>
+      <li>✓ Project suggestions</li>
+    </ul>
+    <Button>Start Now</Button>
+  </div>
+  <div className="p-8 rounded-lg shadow-xl border-2 border-blue-600 bg-gray-900 text-white relative flex flex-col">
+    <span className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
+    <h3 className="text-2xl font-bold mb-2">Professional</h3>
+    <p className="text-4xl font-bold mb-4">?<span className="text-lg font-mono text-gray-400">/month</span></p>
+    <ul className="mb-6 space-y-2 text-gray-300 flex-grow">
+      <li>✓ Unlimited courses</li>
+      <li>✓ Advanced AI Q&A</li>
+      <li>✓ Detailed project suggestions</li>
+      <li>✓ Spaced repetition review</li>
+    </ul>
+    <Button2>Start Now</Button2>
+  </div>
+          </div>
+          </section>
+    <section  className="py-20 text-center bg-gray-50 rounded-lg">
+            <h2 className="text-3xl  font-mono text-gray-900 mb-4">
+  Ready to accelerate your learning?
+</h2>
+<p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+  Leave your contact information.
+</p>
+            <div className="max-w-xl mx-auto">
+              <Form />
+            </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+<footer className="border-t mt-20">
+        <div className="container mx-auto p-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div className="flex items-center gap-2 mb-4 md:mb-0">
+                <img src="/logo.jpg" alt="logo" className="rounded-md"/>
+                <p className="font-bold text-blue-600">AlPow</p>
+            </div>
+            <div className="flex gap-4 mt-4 md:mt-0">
+                <a href="#" className="text-gray-500 hover:text-blue-600">Github</a>
+                <a href="#" className="text-gray-500 hover:text-blue-600">Facebook</a>
+            </div>
+        </div>
       </footer>
     </div>
   );
